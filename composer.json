@@ -1,0 +1,13 @@
+{
+    "name": "root/group-m",
+    "authors": [
+        {
+            "name": "brights1de",
+            "email": "brights1de@inbox.ru"
+        }
+    ],
+    "require": {
+        "sunra/php-simple-html-dom-parser": "1.5.2",
+        "twig/twig": "~1.0"
+    }
+}

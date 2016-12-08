@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+    {% endblock %}
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="row">
+            {% if newses %}
+                {% autoescape false %}
+                    {% for news in newses %}
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><a target="_blank" href="{{news['link']}}">{{news['title']}}</a></div>
+                                <div class="panel-body"><img src="{% if news['img'] %} {{news['img']}} {% else %} http://placehold.it/200x125 {% endif %}" alt=""></div>
+                                <div class="panel-footer">
+                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>&nbsp;{{news['date']}}
+                                    <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="{{news['text']}}">
+                                        Read more
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% if loop.index % 4 == 0 %}
+                        <div class="clearfix"></div>
+                        {% endif %}
+                    {% endfor %}
+                {% endautoescape %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
